@@ -32,6 +32,6 @@ import { AppRoutingModule } from './app-routing.module';
     WelcomeComponent,
     PageNotFoundComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

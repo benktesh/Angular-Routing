@@ -6,18 +6,21 @@ import { ProductEditComponent } from './product-edit.component';
 
 import { ProductFilterPipe } from './product-filter.pipe';
 import { ProductService } from './product.service';
+import { ProductResolver } from './product-resolver-service';
+
 
 import { SharedModule } from '../shared/shared.module';
 
 import { RouterModule } from '@angular/router'
+
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
       {path: 'products', component: ProductListComponent },
-      {path: 'products/:id', component: ProductDetailComponent },
-      {path: 'products/:id/edit', component: ProductEditComponent }
+      {path: 'products/:id', component: ProductDetailComponent, resolve: {product: ProductResolver} },
+      {path: 'products/:id/edit', component: ProductEditComponent, resolve: {product: ProductResolver} }
     ])
   ],
   declarations: [
@@ -27,7 +30,8 @@ import { RouterModule } from '@angular/router'
     ProductFilterPipe
   ],
   providers: [
-    ProductService
+    ProductService,
+    ProductResolver
   ]
 })
 export class ProductModule {}

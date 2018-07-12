@@ -9,8 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
     ngOnInit(): void {
-        let id = +this.route.snapshot.params['id']
-        this.getProduct(id);
+        this.product = this.route.snapshot.data['product']
+        
     }
     pageTitle: string = 'Product Detail';
     product: IProduct;
@@ -18,9 +18,5 @@ export class ProductDetailComponent implements OnInit {
 
     constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
-    getProduct(id: number) {
-        this.productService.getProduct(id).subscribe(
-            product => this.product = product,
-            error => this.errorMessage = <any>error);
-    }
+
 }

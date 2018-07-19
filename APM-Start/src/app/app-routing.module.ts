@@ -8,11 +8,12 @@ const ROUTES = [
     //  { path: 'products', component:ProductListComponent},
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
+    
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(ROUTES)
+        RouterModule.forRoot(ROUTES, {enableTracing:true} )
     ],
     exports: [RouterModule]
 
